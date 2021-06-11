@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meals_application/data/category_list.dart';
 import 'package:meals_application/widgets/categort.dart';
+import 'package:meals_application/widgets/drawer.dart';
 
 class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -11,7 +12,9 @@ class CategoryScreen extends StatelessWidget {
         backgroundColor: Colors.pinkAccent,
         title: Text('Categories'),
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+          child: MyDrawer(),
+      ),
       body: GridView.builder(
         itemCount: categories_list.length,
         itemBuilder: (context, index) {
