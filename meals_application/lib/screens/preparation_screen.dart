@@ -15,6 +15,7 @@ class _PreparationScreenState extends State<PreparationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final mq = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.yellow[100],
       appBar:
@@ -23,8 +24,8 @@ class _PreparationScreenState extends State<PreparationScreen> {
         child: Column(
           children: [
             Container(
-              height: 200,
-              width: double.infinity,
+              height: mq.height*0.3,
+              width: mq.width*1.0,
               color: Colors.grey,
               child: Image.network(
                 widget.imageurl,
@@ -38,8 +39,8 @@ class _PreparationScreenState extends State<PreparationScreen> {
             ),
             SizedBox(height: 12),
             Container(
-              height: 200,
-              width: 300,
+              height: mq.height*0.25,
+              width: mq.width*0.7,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
@@ -64,18 +65,20 @@ class _PreparationScreenState extends State<PreparationScreen> {
             SizedBox(height: 12),
             Container(
               padding: EdgeInsets.all(8),
-              height: 200,
-              width: 300,
+              height: mq.height*0.25,
+              width: mq.width*0.73,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: Colors.black, width: 1)),
-              child: Column(
-                children: [
-                  buildStep('cut the onion', 1),
-                  buildStep('boil the water', 2),
-                  buildStep('add some salt', 3),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    buildStep('cut the onion', 1),
+                    buildStep('boil the water', 2),
+                    buildStep('add some salt', 3),
+                  ],
+                ),
               ),
             ),
           ],
@@ -113,6 +116,7 @@ class _PreparationScreenState extends State<PreparationScreen> {
   }
 
   Widget buildStep(String text, int count) {
+    
     return Container(
       margin: EdgeInsets.only(bottom: 10),
       child: Row(
@@ -132,7 +136,7 @@ class _PreparationScreenState extends State<PreparationScreen> {
           SizedBox(width: 10),
           Container(
             width: 200,
-            child: Text('cut it in small pieces'),
+            child: Text(text),
           )
         ],
       ),
